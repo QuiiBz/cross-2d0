@@ -8,5 +8,7 @@ jobs:
       - name: Install
         run: yarn
       # TODO run on whole app
+      - name: Install server
+        run: cd server && yarn
       - name: Run ESLint
-        run: yarn lint:server
+        run: cd .. && yarn lint:server
