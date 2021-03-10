@@ -6,7 +6,9 @@
   "author": "Tom <quiibzdev@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "lint": "npx eslint . --ext js,jsx"
+    "lint": "yarn lint:app && yarn lint:server",
+    "lint:app": "npx eslint ./app --ext js,jsx",
+    "lint:server": "npx eslint ./server --ext js"
   },
   "devDependencies": {
     "eslint": "^7.21.0",
