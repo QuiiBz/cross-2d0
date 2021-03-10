@@ -1,0 +1,14 @@
+name: Lint
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install
+        run: yarn
+      # TODO run on whole app
+      - name: Install server
+        run: cd server && yarn
+      - name: Run ESLint
+        run: yarn lint:server
