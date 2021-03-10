@@ -1,5 +1,7 @@
 # Cross 2d0
 
+[![Lint](https://github.com/QuiiBz/cross-2d0/actions/workflows/lint.yml/badge.svg)](https://github.com/QuiiBz/cross-2d0/actions/workflows/lint.yml)
+
 Subject: [here](https://github.com/pu-erh/2d0)
 
 ## How to setup
