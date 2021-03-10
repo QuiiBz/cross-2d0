@@ -6,3 +6,4 @@ web-build/
 
 npm-debug.*
 .DS_Store
+.env
