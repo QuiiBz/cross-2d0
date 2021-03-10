@@ -11,4 +11,4 @@ jobs:
       - name: Install server
         run: cd server && yarn
       - name: Run ESLint
-        run: cd .. && yarn lint:server
+        run: yarn lint:server
