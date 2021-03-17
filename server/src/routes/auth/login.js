@@ -1,31 +1,19 @@
-import { PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
+// eslint-disable-next-line import/no-unresolved
+import passport from 'passport';
+import jwt from 'jsonwebtoken';
 
 const login = async (req, res) => {
-    const {
-        firstname, lastname, email, birthdate, password, passwordConfirmation,
-    } = req.body;
+    passport.authenticate('local', { session: false }, (err, user) => {
+        if (err) {
+            return res.status(400).json({ error: err });
+        }
 
-    if (!(firstname || lastname || email || birthdate || password || passwordConfirmation)) {
-        return res.status(400).json('Missing values');
-    }
+        const { email } = user;
+        const payload = { email };
+        const token = jwt.sign(payload, process.env.JWT_ENCRYPTION);
 
-    try {
-        await prisma.user.create({
-            data: {
-                firstname,
-                lastname,
-                email,
-                birthdate: new Date(birthdate),
-                encryptedPassword: password,
-            },
-        });
-    } catch (err) {
-        return res.status(400).json('User already exist');
-    }
-
-    return res.json('Login');
+        return res.json({ data: { user, token } });
+    })(req, res);
 };
 
 export default login;
